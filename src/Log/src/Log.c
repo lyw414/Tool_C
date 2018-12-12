@@ -8,7 +8,7 @@
  * return       true 成功  false  失败
  * 
  */
-bool Get_Str_time_for_log ( char * szStrTime, unsigned int iSizeOfStrTime )
+static bool Get_Str_time_for_log ( char * szStrTime, size_t iSizeOfStrTime )
 {
     bool res = false;
     int index = 0;
@@ -29,8 +29,7 @@ bool Get_Str_time_for_log ( char * szStrTime, unsigned int iSizeOfStrTime )
 
     if ( ( ptm = gmtime ( & t ) ) != NULL )
     {
-        vsnprintf ( szString,iSizeOfStrTime,"%04d_%02d_%02d_%02d_%02d_%02d",
-                    ptm->tm_year + 1990 ,ptm->tm_mon,ptm->tm_mday,ptm->tm_hour,ptm->tm_min,ptm->tm_sec);
+        snprintf ( szStrTime,iSizeOfStrTime,"%04d_%02d_%02d_%02d_%02d_%02d",ptm->tm_year + 1990 ,ptm->tm_mon,ptm->tm_mday,ptm->tm_hour,ptm->tm_min,ptm->tm_sec);
         return true;
     }
     else
@@ -47,9 +46,10 @@ bool Get_Str_time_for_log ( char * szStrTime, unsigned int iSizeOfStrTime )
  * @return           true 成功 false 失败 
  *
  */
-static bool mkdir_for_log(const char * szFilePath);
+static bool mkdir_for_log(const char * szFilePath)
 {
     char DirName[1024] = { 0 };
+    int i = 0;
     if ( szFilePath == NULL )
     {
         return false;
@@ -61,7 +61,7 @@ static bool mkdir_for_log(const char * szFilePath);
      
     strcpy(_g_log_info.szLogPath,DirName);
 
-    len = strlen(DirName);             
+    int len = strlen(DirName);             
 
     if('/' != DirName[len-1]) 
     {  
@@ -85,15 +85,15 @@ static bool mkdir_for_log(const char * szFilePath);
     }    
     return true;      
 }
-
-bool Init_Log ( const char *szFileName, const char * szFilePath, TLog_Level level, unsigned int size, TLog_Mode mode )
+ 
+bool Init_log(const char *szFileName, const char * szFilePath,TLog_Level level,unsigned int size,TLog_Mode mode)
 {
     bool res = false;
-    char * szDefaultPath = "./";
-    char * szDefaultName = "Default";
+    char szDefaultPath[] = "./";
+    char szDefaultName[] = "Default";
     char szFullFileName [ 1024 ] = { 0 };
     char szStrTime [ 64 ] = { 0 };
-
+    _g_p_log_info = & _g_log_info;
     //create log directory,if failed use default
     if (  ( mkdir_for_log ( szFilePath ) ) )
     {
@@ -105,26 +105,27 @@ bool Init_Log ( const char *szFileName, const char * szFilePath, TLog_Level leve
         strcpy ( _g_log_info.szLogPath, szDefaultPath );
     }
 
-    strcat ( szFulleFileName, _g_log_info.szLogPath);
-    strcat ( szFulleFileName, "/");
+    strcat ( szFullFileName, _g_log_info.szLogPath);
+    strcat ( szFullFileName, "/");
 
     // open log file , if failed use default
     if ( szFileName == NULL )
     {
-        strcat ( szFulleFileName,szFileName);
+        strcat ( szFullFileName,szFileName);
     }
     else
     {
-        strcat ( szFulleFileName,szDefaultName);
+        strcat ( szFullFileName,szDefaultName);
     }
     
     if ( Get_Str_time_for_log ( szStrTime, sizeof ( szStrTime ) ) )
     {
-        strcat ( szFulleFileName,"_" );
-        strcat ( szFulleFileName,szStrTime );
+        strcat ( szFullFileName,"_" );
+        strcat ( szFullFileName,szStrTime );
     }
 
     strcpy ( _g_log_info.szLogName,szFullFileName);
+    strcpy ( _g_log_info.szLogName,".log");
 
     if ( ( _g_log_info.file_hanlde = fopen ( _g_log_info.szLogName,"ab" ) ) != NULL )
     {
@@ -145,7 +146,7 @@ bool Init_Log ( const char *szFileName, const char * szFilePath, TLog_Level leve
     _g_log_info.size = size;
     
     //set mode
-    if ( _g_log_info.mode != SCK_MODE && _g_long_info.mode != PTHREAD_MODE )
+    if ( _g_log_info.mode != SCK_MODE && _g_log_info.mode != PTHREAD_MODE )
     {
         _g_log_info.mode = PTHREAD_MODE;
     }
@@ -153,6 +154,19 @@ bool Init_Log ( const char *szFileName, const char * szFilePath, TLog_Level leve
     {
         _g_log_info.mode = mode;
     }
-    
-    //
+
+    if ( _g_log_info.mode == SCK_MODE )
+    {
+        printf ( "Not Support it! Waiting Finished!\n" );
+        _g_log_info.mode == PTHREAD_MODE;
+    }
+
+    if ( _g_log_info.mode == SCK_MODE )
+    {
+        //add start logic here
+    }
+
+    //init pthread_mutex
+    pthread_mutex_init ( &_g_log_info.lock,NULL );
+    return true;
 } 

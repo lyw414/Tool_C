@@ -2,6 +2,9 @@
 #define LYW_CODE_LOG
 #include <stdio.h>
 #include <pthread.h>
+#include <stdbool.h>
+#include <string.h>
+#include <unistd.h>
 
 typedef enum _Log_Level
 {
@@ -30,10 +33,12 @@ typedef struct _Log_Info
     int port;
     char ip[64];
 
-} TLog_Info, * PLog_Info;
+} TLog_Info;
+
+typedef TLog_Info * PLog_Info;
 
 TLog_Info _g_log_info;
-PLog_Info _g_p_log_info = &_g_log_info;
+PLog_Info _g_p_log_info;
 
 /*
  * @breif       生成固定格的时间串
@@ -43,7 +48,7 @@ PLog_Info _g_p_log_info = &_g_log_info;
  *
  * return       true 成功  false  失败
  */
-bool Get_Str_time_for_log ( char * szStrTime, unsigned int iSizeOfStrTime );
+static bool Get_Str_time_for_log ( char * szStrTime, size_t iSizeOfStrTime );
 
 
 /*
@@ -54,16 +59,14 @@ bool Get_Str_time_for_log ( char * szStrTime, unsigned int iSizeOfStrTime );
  */
 static bool mkdir_for_log(const char * szFilePath);
 
+bool Init_log(const char *szFileName, const char * szFilePath,TLog_Level level,unsigned int size,TLog_Mode mode);
 
-bool create_file_for_log(const char * szFilePath,const char * szFileName);
+//bool Free_Log();
 
-bool Init_Log(const char *szFileName, const char * szFilePath,TLog_Level level,unsigned int size,TLog_Mode mode);
+#endif
 
-bool Free_Log();
-
-
-#define Init_Log(FileName,FilePath,size,mode) \
-    Init_Log(const char *szFileName, const char * szFilePath,unsigned int size,TLog_Mode mode);
+#define Init_Log(FileName,FilePath,level,size,mode) \
+    Init_log(FileName, FilePath, level,size,mode);
         
 #define UserError()
 #define UserWarning()
@@ -72,4 +75,3 @@ bool Free_Log();
 #define UserWarning_ASC()
 #define UserDebug_ASC()
 
-#endif
