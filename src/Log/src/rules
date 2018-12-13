@@ -1,0 +1,8 @@
+CC=gcc
+CPP=g++
+CFLG= -Wall -g -lpthread
+CPPFLG= -std=c++11 -wall -g -lpthread
+INCLUDE= -I ../include
+SRC=${wildcard *.c}
+OBJ=${patsubst %.c,%.o,$(SRC)}
+DEFINE= -D LYW_CODE_LOG_ON
