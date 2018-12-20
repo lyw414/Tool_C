@@ -10,8 +10,10 @@ export Lib
 export Src
 export Rul
 export Bin
+#编译按优先级进行排序编译
 if [ $1 == "clean" ];then
 make -f build_all.mk clean
 else
-make -f build_all.mk all
+make -f build_all.mk basic
+make -f build_all.mk all 
 fi

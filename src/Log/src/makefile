@@ -9,5 +9,6 @@ all: $(OBJ)
 	mv Log.o ../../../lib/
 	mv Test_Log ../../../bin/
 	cp ../include/Log.h ../../../include/
+	rm *.o
 clean:
 	echo "Log Clean OK!"
