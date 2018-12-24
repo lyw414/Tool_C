@@ -23,7 +23,7 @@ typedef struct _list_node
 typedef struct _list_Info
 {
     size_t data_size;
-    size_t size;
+    size_t isize;
     char listname[128];
     PList_Node head;
     PList_Node end;
@@ -38,6 +38,9 @@ typedef struct _list_Info
 
     bool (* clear ) (struct _list_Info * self);
     bool (* empty ) (struct _list_Info * self);
+    bool (* full ) (struct _list_Info * self);
+    bool (* size ) (struct _list_Info * self);
+    bool (* init ) (struct _list_Info * self);
 
 } TList;
 
@@ -57,6 +60,9 @@ bool get_front_for_list (struct _list_Info * self,void * value );
 bool pop_front_for_list (struct _list_Info * self, void * value );
 bool clear_for_list (struct _list_Info * self);
 bool empty_for_list (struct _list_Info * self);
+bool full_for_list (struct _list_Info * self);
+bool size_for_list (struct _list_Info * self);
+bool init_for_list (struct _list_Info * self);
 
 
 
@@ -68,7 +74,7 @@ bool empty_for_list (struct _list_Info * self);
    TList p = { \
     .data_size = sizeof(type),\
     .listname = #p,\
-    .size = 0,\
+    .isize = 0,\
     .head = NULL,\
     .end = NULL,\
     .push_back = push_back_for_list,\
@@ -78,7 +84,10 @@ bool empty_for_list (struct _list_Info * self);
     .get_front = get_front_for_list,\
     .pop_front = pop_front_for_list,\
     .clear = clear_for_list,\
-    .empty = empty_for_list\
+    .empty = empty_for_list,\
+    .full = full_for_list,\
+    .size = size_for_list,\
+    .init = init_for_list\
    };\
 
 #endif

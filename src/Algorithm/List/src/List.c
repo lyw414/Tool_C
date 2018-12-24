@@ -2,7 +2,7 @@
 
 bool empty_for_list (struct _list_Info * self)
 {
-    if ( self -> size > 0 )
+    if ( self -> isize > 0 )
     {
         return false;
     }
@@ -40,7 +40,7 @@ bool push_back_for_list  (struct _list_Info * self,void * value )
 
     self -> end = tmp;
     //add size
-    (self -> size) ++;
+    (self -> isize) ++;
     return true;
 }
 
@@ -89,7 +89,7 @@ bool pop_back_for_list  ( struct _list_Info * self, void * value )
     else
     {
         memcpy ( value, self -> end -> pdata, self -> data_size );
-        (self->size )-- ;
+        (self->isize )-- ;
 
         tmp = self -> end;
 
@@ -134,7 +134,7 @@ bool push_front_for_list ( struct _list_Info * self, void * value )
     }
     self -> head = tmp;
     //add size
-    (self -> size) ++;
+    (self -> isize) ++;
     return true;
     
 }
@@ -163,7 +163,7 @@ bool pop_front_for_list (struct _list_Info * self, void * value )
     else
     {
         memcpy ( value, self -> head -> pdata, self -> data_size );
-        (self->size )-- ;
+        (self->isize )-- ;
         tmp = self -> head;
 
         self -> head = self -> head-> next;
@@ -192,17 +192,29 @@ bool clear_for_list (struct _list_Info * self)
     int iLoop = 0;
     PList_Node tmp = self -> head;
     PList_Node next = self -> head;
-    for ( iLoop = 0; iLoop < self->size; iLoop++)
+    for ( iLoop = 0; iLoop < self->isize; iLoop++)
     {
        next = tmp->next;
        free ( tmp->pdata );
        free ( tmp );
        tmp = next;
     }
-    self -> size = 0;
+    self -> isize = 0;
     self -> head = NULL;
     self -> end = NULL;
     self -> data_size = 0;
+    return true;
+}
+bool full_for_list (struct _list_Info * self)
+{
+    return false;
+}
+bool size_for_list (struct _list_Info * self)
+{
+    return self->isize;
+}
+bool init_for_list (struct _list_Info * self)
+{
     return true;
 }
 

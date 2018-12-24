@@ -7,7 +7,7 @@ typedef struct _fixed_length_list_info
 {
     void ** dataArray;
     size_t data_size;
-    size_t fixedSize;
+    //size_t fixedSize;
     size_t totalSize;
 
     char szListName [ 64 ];
@@ -55,7 +55,6 @@ int size_for_FixedLengthList ( struct _fixed_length_list_info * self );
     {\
         .dataArray = NULL,\
         .data_size = sizeof(type),\
-        .fixedSize = NULL,\
         .totalSize = Size,\
         .szListName = #p,\
         .headIndex = 0,\

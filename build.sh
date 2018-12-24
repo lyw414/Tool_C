@@ -15,5 +15,6 @@ if [ $1 == "clean" ];then
 make -f build_all.mk clean
 else
 make -f build_all.mk basic
-make -f build_all.mk all 
+make -f build_all.mk basic_app
+make -f build_all.mk app
 fi

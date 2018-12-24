@@ -24,7 +24,7 @@ void pop_front_all ()
 {
     int tmp = 0;
     int value;
-    int size =  mylist.size;
+    int size =  mylist.isize;
     for ( tmp = 0; tmp < size; tmp ++ )
     {
         mylist.pop_front(&mylist,&value);
@@ -36,7 +36,7 @@ void pop_back_all()
 {
     int tmp = 0;
     int value;
-    int size =  mylist.size;
+    int size =  mylist.isize;
     for ( tmp = 0; tmp < size; tmp ++ )
     {
         mylist.pop_back(&mylist,&value);
