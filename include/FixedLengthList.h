@@ -72,5 +72,27 @@ int size_for_FixedLengthList ( struct _fixed_length_list_info * self );
         .size = size_for_FixedLengthList, \
         .init = init_for_FixedLengthList\
     };
+#define _FixedLengthList(p,type,Size)\
+    p = \
+    {\
+        .dataArray = NULL,\
+        .data_size = sizeof(type),\
+        .totalSize = Size,\
+        .szListName = #p,\
+        .headIndex = 0,\
+        .endIndex = 1,\
+        .push_back = push_back_for_FixedLengthList,\
+        .get_back = get_back_for_FixedLengthList,\
+        .pop_back = pop_back_for_FixedLengthList,\
+        .push_front = push_front_for_FixedLengthList,\
+        .get_front = get_front_for_FixedLengthList,\
+        .pop_front = pop_front_for_FixedLengthList,\
+        .full = full_for_FixedLengthList,\
+        .empty = empty_for_FixedLengthList,\
+        .clear = clear_for_FixedLengthList,\
+        .free = free_for_FixedLengthList,\
+        .size = size_for_FixedLengthList, \
+        .init = init_for_FixedLengthList\
+    }
 
 #endif
