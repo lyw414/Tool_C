@@ -10,6 +10,8 @@ export Lib
 export Src
 export Rul
 export Bin
+rm ${Inc}/*
+find ${Src} -name *.h | xargs -I {} cp {} ./include
 #编译按优先级进行排序编译
 if [ $1 == "clean" ];then
 make -f build_all.mk clean

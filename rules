@@ -2,7 +2,7 @@ CC=gcc
 CPP=g++
 CFLG= -Wall -g -lpthread
 CPPFLG= -std=c++11 -wall -g -lpthread
-INCLUDE= -I ../include -I $(Inc)
+INCLUDE= -I $(Inc)
 SRC=${wildcard *.c}
 OBJ=${patsubst %.cpp,%.o,$(SRC)}
 DEFINE= -D LYW_CODE_LOG_ON

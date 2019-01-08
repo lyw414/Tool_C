@@ -41,6 +41,7 @@ typedef struct _list_Info
     bool (* full ) (struct _list_Info * self);
     bool (* size ) (struct _list_Info * self);
     bool (* init ) (struct _list_Info * self);
+    bool (* free ) (struct _list_Info * self);
 
 } TList;
 
@@ -84,31 +85,11 @@ bool init_for_list (struct _list_Info * self);
     .get_front = get_front_for_list,\
     .pop_front = pop_front_for_list,\
     .clear = clear_for_list,\
+    .free = clear_for_list,\
     .empty = empty_for_list,\
     .full = full_for_list,\
     .size = size_for_list,\
     .init = init_for_list\
    };\
-
-#define _List(p,type) \
-    p = { \
-    .data_size = sizeof(type),\
-    .listname = #p,\
-    .isize = 0,\
-    .head = NULL,\
-    .end = NULL,\
-    .push_back = push_back_for_list,\
-    .get_back = get_back_for_list,\
-    .pop_back = pop_back_for_list,\
-    .push_front = push_front_for_list,\
-    .get_front = get_front_for_list,\
-    .pop_front = pop_front_for_list,\
-    .clear = clear_for_list,\
-    .empty = empty_for_list,\
-    .full = full_for_list,\
-    .size = size_for_list,\
-    .init = init_for_list\
-   }\
-
 
 #endif
