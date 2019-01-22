@@ -1,0 +1,19 @@
+#BST
+user need provide compare function for node compare
+this function is for two condition :
+1. when add node used it get big or small
+2. when find / del used it to get equal
+
+so the data must be designed like follow:
+must have a key in your struct to decide your struct's status bigger smaller equal, and provide function judge it
+
+#compare function
+
+*
+*  return :
+*  0 data1 == data2 
+*  1 data1 > data2 
+*  2 data1 < data2
+*
+
+typedef int ( * Tcompare_func_BST ) ( void * data1, void * data2 )

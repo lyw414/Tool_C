@@ -110,8 +110,10 @@ int main ()
     Init_Log("Test_BinaryTree","./log/",DEBUG_LEVEL,10,PTHREAD_MODE);
     NEW_BinaryTree (pBinaryTree_src,test_str);
     NEW_BinaryTree (pBinaryTree_tag,test_str);
+
     pBinaryTree_src -> init ( pBinaryTree_src );
     pBinaryTree_tag -> init ( pBinaryTree_tag );
+
 
     build_src();
     printf ("Src::\n");
@@ -138,6 +140,9 @@ int main ()
     printf ("\n");
     ret = pBinaryTree_tag->post_order_travel(pBinaryTree_tag,NULL,shownode);
     printf ("\n");
+    
+    pBinaryTree_tag->free(pBinaryTree_tag);
+    pBinaryTree_tag->free(pBinaryTree_src);
     return 0;
 }
 

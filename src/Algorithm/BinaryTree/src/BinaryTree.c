@@ -1,4 +1,11 @@
 #include "BinaryTree.h"
+static void delete_BinaryTree_Node ( PBinaryTree_Node node )
+{
+    if ( node != NULL )
+    {
+        free ( node );
+    }
+}
 
 bool SetValue_for_BinaryTree_Node (struct _binary_tree_Node * self, void * value )
 {
@@ -474,8 +481,6 @@ bool build_by_pre_and_in_for_BinaryTree ( struct _binary_tree * self, PBinaryTre
     //Use List build Stack
     //Stack cache Rigtht_Node Index in InOrderArray
     List(BinaryTreeStack,Array_Info);
-    //用于保存二叉树根节点信息
-    int IsRoot = 0;
 
     PBinaryTree_Node root_node = NULL;
     Array_Info Root_Array_Info = { 0 };
@@ -586,12 +591,13 @@ bool build_by_pre_and_in_for_BinaryTree ( struct _binary_tree * self, PBinaryTre
 
 bool build_by_post_and_in_for_BinaryTree ( struct _binary_tree * self, PBinaryTree_Node Post_[], PBinaryTree_Node In_[], int Num )
 {
-
+    return true;
 }
 
 bool free_for_BinaryTree ( struct _binary_tree * self )
 {
-
+    self -> post_order_travel ( self, NULL, delete_BinaryTree_Node );
+    return true;
 }
 
 bool init_for_BinaryTree ( struct _binary_tree * self )
@@ -618,8 +624,8 @@ bool empty_for_BinaryTree ( struct _binary_tree * self )
 
 bool clear_for_BinaryTree ( struct _binary_tree * self )
 {
-    
-
+    self->free(self);
+    return true;
 }
 
 
