@@ -29,5 +29,7 @@ ADT 原则：
 使用 定长列表实现 应用查看 Test_Queue.c
 # KMP
 KMP 字符串模式匹配 应用查看 Test_KMP.c
-#BinaryTree
+# BinaryTree
 二叉树 通用存储结构
+# BST
+二叉搜索树 提供增删改查功能
