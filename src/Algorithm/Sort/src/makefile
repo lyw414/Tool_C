@@ -1,2 +1,2 @@
 all:
-	gcc Test.c Sort.c  Sort_Func.c -I ../include/
+	gcc -g -Wall Test.c Sort.c  Sort_Func.c -I ../include/
