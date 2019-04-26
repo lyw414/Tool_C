@@ -33,7 +33,7 @@ KMP 字符串模式匹配 应用查看 Test_KMP.c
 二叉树 通用存储结构
 # BST
 二叉搜索树 提供增删改查功能
-#HEAP
+# HEAP
 最小值堆 提供堆创建 pushBack PopFront的功能
-#Sort
+# Sort
 排序结构 提供排序算法选择 支持插入（二分） 冒泡 分治等金典排序算法
