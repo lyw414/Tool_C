@@ -13,7 +13,7 @@ typedef enum _SortAlgorithmForSort
     Bubble_SORT
 }TSortAlgorithmForSort;
 
-static TSortFuncForSort _g_SortFuncArray[] = 
+static const TSortFuncForSort _g_SortFuncArray[] = 
 {
     Func_INSERT_SORT,
     Func_Bubble_SORT
