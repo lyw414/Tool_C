@@ -20,13 +20,18 @@ int main()
 {
     int a[] = { 11,1,4,2,8,0,9};
     int iLoop = 0;
-    Sort(p,CompareForSort);
-//  p.SortFunc(&p,a,sizeof(int),sizeof(a) / sizeof ( int ) ,Bubble_SORT);
-    p.SortFunc(&p,a,sizeof(int),sizeof(a) / sizeof ( int ) ,INSERT_SORT);
+//    Sort(p,CompareForSort);
+    PSort p = Init_Sort ( CompareForSort );
+//  p->SortFunc(&p,a,sizeof(int),sizeof(a) / sizeof ( int ) ,Bubble_SORT);
+//  p->SortFunc(p,a,sizeof(int),sizeof(a) / sizeof ( int ) ,INSERT_SORT);
+//  p->SortFunc(p,a,sizeof(int),sizeof(a) / sizeof ( int ) ,SELECT_SORT);
+    p->SortFunc(p,a,sizeof(int),sizeof(a) / sizeof ( int ) ,SHELL_SORT);
     for ( iLoop = 0; iLoop < sizeof(a) / sizeof(int);iLoop++)
     {
         printf("%d ",a[iLoop] );
     }
     printf ("\n");
+
+    Free_Sort ( p );
     return 0;
 }

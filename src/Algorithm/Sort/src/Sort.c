@@ -8,3 +8,21 @@ bool SetCompareForSort ( struct _Sort * this,TCompareForSort Compare)
     this->Compare = Compare;
     return true;
 }
+
+PSort Init_Sort ( TCompareForSort compareFunc )
+{
+      PSort Name = (PSort)malloc ( sizeof(TSort) );
+      Name -> Compare = compareFunc;
+      Name -> SortFunc = SortForSort;
+      Name -> SetCompare = SetCompareForSort;
+      return Name;
+}
+
+int Free_Sort ( PSort pSort )
+{
+    if ( pSort != NULL )
+    {
+        free ( pSort );
+    }
+    return 0;
+}

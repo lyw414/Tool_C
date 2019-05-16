@@ -10,13 +10,18 @@ typedef bool ( *TSortFuncForSort ) ( void * DataArray,size_t DataSize, size_t Ar
 typedef enum _SortAlgorithmForSort
 {
     INSERT_SORT,
-    Bubble_SORT
+    Bubble_SORT,
+    SELECT_SORT,
+    SHELL_SORT
+
 }TSortAlgorithmForSort;
 
 static const TSortFuncForSort _g_SortFuncArray[] = 
 {
     Func_INSERT_SORT,
-    Func_Bubble_SORT
+    Func_Bubble_SORT,
+    Func_Select_Sort,
+    Func_Shell_Sort
 };
 
 struct _Sort;
@@ -34,7 +39,11 @@ typedef struct _Sort
     //用户接口
     TSortForSort SortFunc;
     TSetCompareForSort SetCompare;
-} TSort,*pSort;
+} TSort,*PSort;
+
+PSort Init_Sort(TCompareForSort CompareFunc );
+int Free_Sort(PSort pSort );
+
 
 #define Sort(Name,CompareFunc) \
     TSort Name = {\
@@ -44,7 +53,7 @@ typedef struct _Sort
     };
 
 #define New_Sort(Name,CompareFunc) \
-    pSort Name = (pSort)malloc ( sizeof(TSort) );\
+    PSort Name = (PSort)malloc ( sizeof(TSort) );\
     Name -> Compare = CompareFunc;\
     Name -> SortFunc = SortForSort;\
     Name -> SetCompare = SetCompareForSort;
