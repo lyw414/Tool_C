@@ -9,19 +9,24 @@ typedef bool ( *TSortFuncForSort ) ( void * DataArray,size_t DataSize, size_t Ar
 
 typedef enum _SortAlgorithmForSort
 {
-    INSERT_SORT,
+    DIRECT_INSERT_SORT, // direct insert sort 
+    INSERT_SORT, //binary insert sort 
     Bubble_SORT,
     SELECT_SORT,
-    SHELL_SORT
-
+    SHELL_SORT,
+    QUICK_SORT,
+    MERGE_SORT
 }TSortAlgorithmForSort;
 
 static const TSortFuncForSort _g_SortFuncArray[] = 
 {
+    direct_insert_sort,
     Func_INSERT_SORT,
     Func_Bubble_SORT,
     Func_Select_Sort,
-    Func_Shell_Sort
+    Func_Shell_Sort,
+    Func_Quick_Sort,
+    Func_Merge_Sort
 };
 
 struct _Sort;
