@@ -1,0 +1,3 @@
+# Pointer Struct 
+    Pointer Struct is used for Thread shared resource, Use create function get a resource pointer, free to release resource, copy to get a copy of resource, but once create or copy must have once free.
+    use atomic_add or atomic_subtract realize reference Counter. only in case NULL Pointer or Wild Pointer.

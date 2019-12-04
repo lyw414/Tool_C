@@ -1,7 +1,9 @@
 #ifndef LYW_CODE_LIST
 #define LYW_CODE_LIST
 #include <stdlib.h>
-#include "Log.h"
+#include <stdbool.h>
+#include <string.h>
+//#include "Log.h"
 
 /*
  *

@@ -1,0 +1,1 @@
+/bin/cc -g  -rdynamic CMakeFiles/RBTreeTest.dir/src/RBTree_Test.c.o  -o RBTreeTest -Wl,-rpath,/home/Lession/Tool_C/Tool_C/src/Algorithm/RBTree libRBTree.so libPList.so 

@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../List/include/List.h
+stdlib.h
+-
+stdbool.h
+-
+string.h
+-
+
+/home/Lession/Tool_C/Tool_C/src/Algorithm/List/src/List.c
+List.h
+/home/Lession/Tool_C/Tool_C/src/Algorithm/List/src/List.h
+

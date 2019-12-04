@@ -1,0 +1,1 @@
+/bin/cc -fPIC -g  -shared -Wl,-soname,libPList.so -o libPList.so CMakeFiles/PList.dir/home/Lession/Tool_C/Tool_C/src/Algorithm/List/src/List.c.o 

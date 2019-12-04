@@ -1,0 +1,1 @@
+/bin/cc -fPIC -g  -shared -Wl,-soname,libRBTree.so -o libRBTree.so CMakeFiles/RBTree.dir/src/RBTree.c.o 

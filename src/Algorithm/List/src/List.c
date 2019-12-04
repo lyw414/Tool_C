@@ -58,7 +58,7 @@ bool get_back_for_list  (struct _list_Info * self, void * value)
 {
     if ( self -> empty (self) )
     {
-        UserWarning ( "in %s :: List [%s] Is Empty!",__func__,self->listname);
+        //UserWarning ( "in %s :: List [%s] Is Empty!",__func__,self->listname);
         return false;
     }
     else
@@ -83,7 +83,7 @@ bool pop_back_for_list  ( struct _list_Info * self, void * value )
     PList_Node tmp = NULL;
     if ( self -> empty (self) )
     {
-        UserWarning ( "in %s :: List [%s] Is Empty!",__func__,self->listname);
+        //UserWarning ( "in %s :: List [%s] Is Empty!",__func__,self->listname);
         return false;
     }
     else
@@ -143,7 +143,7 @@ bool get_front_for_list (struct _list_Info * self, void * value )
 {
     if ( self -> empty (self) )
     {
-        UserWarning ( "in %s :: List [%s] Is Empty!",__func__,self->listname);
+        //UserWarning ( "in %s :: List [%s] Is Empty!",__func__,self->listname);
         return false;
     }
     else
@@ -157,7 +157,7 @@ bool pop_front_for_list (struct _list_Info * self, void * value )
     PList_Node tmp = NULL;
     if ( self -> empty (self) )
     {
-        UserWarning ( "in %s :: List [%s] Is Empty!",__func__,self->listname);
+        //UserWarning ( "in %s :: List [%s] Is Empty!",__func__,self->listname);
         return false;
     }
     else

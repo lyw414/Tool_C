@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../List/include/List.h
+stdlib.h
+-
+stdbool.h
+-
+string.h
+-
+
+/home/Lession/Tool_C/Tool_C/src/Algorithm/RBTree/src/RBTree_Test.c
+RBTree.h
+/home/Lession/Tool_C/Tool_C/src/Algorithm/RBTree/src/RBTree.h
+
+include/RBTree.h
+stdio.h
+-
+string.h
+-
+List.h
+include/List.h
+

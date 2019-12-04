@@ -1,0 +1,24 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+BLACK	include/RBTree.h	/^    BLACK$/;"	e	enum:_RBTreeColor
+Cmp	include/RBTree.h	/^    TCompareFunction Cmp;$/;"	m	struct:RBTree
+PRBTree	include/RBTree.h	/^}TRBTree, * PRBTree;$/;"	t	typeref:struct:RBTree
+PRBTreeNode	include/RBTree.h	/^}TRBTreeNode, * PRBTreeNode;$/;"	t	typeref:struct:RBTreeNode
+RBTree	include/RBTree.h	/^typedef struct RBTree$/;"	s
+RBTreeNode	include/RBTree.h	/^typedef struct RBTreeNode$/;"	s
+RBTree_New	src/RBTree.c	/^PRBTree RBTree_New( size_t DataSize)$/;"	f
+RED	include/RBTree.h	/^    RED,$/;"	e	enum:_RBTreeColor
+RootNode	include/RBTree.h	/^    PRBTreeNode RootNode;$/;"	m	struct:RBTree
+TCompareFunction	include/RBTree.h	/^typedef int (*TCompareFunction)( void * Data1, void * Data2 );$/;"	t
+TRBTree	include/RBTree.h	/^}TRBTree, * PRBTree;$/;"	t	typeref:struct:RBTree
+TRBTreeColor	include/RBTree.h	/^} TRBTreeColor;$/;"	t	typeref:enum:_RBTreeColor
+TRBTreeNode	include/RBTree.h	/^}TRBTreeNode, * PRBTreeNode;$/;"	t	typeref:struct:RBTreeNode
+_RBTreeColor	include/RBTree.h	/^typedef enum _RBTreeColor$/;"	g
+color	include/RBTree.h	/^    TRBTreeColor color;$/;"	m	struct:RBTreeNode
+data	include/RBTree.h	/^    void * data;$/;"	m	struct:RBTreeNode
+main	src/RBTree_Test.c	/^int main()$/;"	f
+sp	src/RBTree_Test.c	/^int sp ( void * Data1, void * Data2 )$/;"	f

@@ -402,7 +402,7 @@ bool Func_Quick_Sort ( void * DataArray, size_t DataSize, size_t ArraySize, TCom
 
                     switch ( compare_func ( tmp, DataArray + iLoop1 * DataSize ) )
                     {
-                        case EQUAL :
+                        case EQUAL : //this make data balance
                         case GREATERTHAN :
 
                             //put iLoop1 to iLoop2 and do iLoop2 
@@ -435,7 +435,7 @@ bool Func_Quick_Sort ( void * DataArray, size_t DataSize, size_t ArraySize, TCom
                 {
                     switch ( compare_func ( tmp, DataArray + iLoop2 * DataSize ) )
                     {
-                        case EQUAL :
+                        case EQUAL : //this make data balance
                         case LESSTHAN :
                             //put iLoop2 to iLoop1 and do iLoop1
                             memcpy ( DataArray + iLoop1 * DataSize, DataArray + iLoop2 * DataSize,DataSize );

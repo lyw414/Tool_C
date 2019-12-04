@@ -45,6 +45,7 @@ PHeap_st Create_Heap( size_t DataSize, size_t InitSize ,TCompare_Function_For_He
     return pHeap;
 }
 
+
 int Free_Heap( PHeap_st pHeap)
 {
     size_t iLoop = 0;

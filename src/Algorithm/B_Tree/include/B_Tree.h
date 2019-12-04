@@ -1,6 +1,4 @@
 #include <stdio.h>
-
-
 typedef struct _B_Tree_Node
 {
     size_t keyNum; //关键字数目 keyNum < m 
@@ -12,5 +10,8 @@ typedef struct _B_Tree_Node
 
 typedef struct _B_Tree
 {
+    // caculate BTreeNode's KeyNum, a node's size should always approach Block's size
+    size_t block_size;
+      
 
 } TBTree,* pBTree;
